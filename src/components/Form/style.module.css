@@ -6,6 +6,8 @@
 --color-dark  */
 
 .sectioForm {
+    display: flex;
+    flex-direction: column;
     position: relative;
     z-index: 2;
 }
@@ -20,4 +22,17 @@
     height: 1930px;
     background: var(--bg-blue-light);
     border-radius: 50%;
+}
+
+.header{
+    display: flex;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox{
+    display: flex;
 }
