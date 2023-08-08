@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+:root{
+    --bg-blue-light: rgba(214, 244, 250, 1);
+    --bg-blue: rgba(116, 204, 216, 1);
+    --color-light: rgba(66, 119, 129, 1);
+    --color-medium: rgba(27, 95, 107, 1);
+    --color-gray: rgba(183, 184, 197, 1);
+    --color-dark: rgba(9, 15, 36, 1);
+}

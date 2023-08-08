@@ -1,0 +1,23 @@
+/* --bg-blue-light, 
+--bg-blue, 
+--color-light,
+--color-medium, 
+--color-gray, 
+--color-dark  */
+
+.sectioForm {
+    position: relative;
+    z-index: 2;
+}
+
+.sectioForm::before{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: -107.5%;
+    left: -52px;
+    width: 1930px;
+    height: 1930px;
+    background: var(--bg-blue-light);
+    border-radius: 50%;
+}

@@ -1,0 +1,9 @@
+.formSection{
+    display: flex;
+    /* position: relative; */
+}
+
+.sectionImage{
+    /* position: relative;
+    z-index: 1; */
+}
