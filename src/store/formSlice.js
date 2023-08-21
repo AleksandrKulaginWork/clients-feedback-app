@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	fields: {
-		name: { value: '', isValid: false },
-		tel: { value: '', isValid: false },
-		email: { value: '', isValid: false },
-		message: { value: '', isValid: false },
+		name: { value: '', isValid: false, errorMessage: '' },
+		tel: { value: '', isValid: false, errorMessage: '' },
+		email: { value: '', isValid: false, errorMessage: '' },
+		message: { value: '', isValid: false, errorMessage: '' },
 		agreement: { value: false, isValid: false },
 	},
 	isSubmitting: false,
 };
 
-const createForm = createSlice({
+const formSlice = createSlice({
 	name: 'form',
 	initialState,
 	reducers: {
@@ -26,8 +26,14 @@ const createForm = createSlice({
 		isFormValid: (state, action) => {
 			state.isSubmitting = action.payload;
 		},
+		setFieldErrorMessage: (state, action) => {
+			const { fieldName, errorMessage } = action.payload;
+			state.fields[fieldName].errorMessage = errorMessage;
+		},
 	},
 });
 
-export const { setFieldValue, setFieldValidation, isFormValid } = createForm.actions;
-export default createForm.reducer;
+export const {
+	setFieldValue, setFieldValidation, isFormValid, setFieldErrorMessage,
+} = formSlice.actions;
+export default formSlice.reducer;
