@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	setFieldValidation, setFieldValue, isFormValid, setFieldErrorMessage,
+	setFieldValidation, setFieldValue, setFieldErrorMessage, setIsSubmitting,
 } from '../../store/formSlice';
 import { validationField } from './utils';
 import { validationForm } from '../../validation/validation';
@@ -35,18 +35,21 @@ export function useFormDispatch() {
 			validationFields[fieldName] = formState.fields[fieldName].value;
 		});
 
-		try {
-			await validationForm.validate(validationFields, { abortEarly: false });
-			dispatch(isFormValid(true));
-		} catch (err) {
-			dispatch(isFormValid(false));
-			if ('inner' in err) {
-				const fieldName = err.path;
-				const errorMessage = err.message;
-				dispatch(setFieldErrorMessage({ fieldName, errorMessage }));
-				dispatch(setFieldValidation({ fieldName, isValid: false }));
-			}
-		}
+		validationForm.validate(validationFields, { abortEarly: false })
+			.then(() => {
+				dispatch(setIsSubmitting(true));
+				setTimeout(() => {
+					dispatch(setIsSubmitting(false));
+				}, 1000);
+			})
+			.catch((errors) => {
+				const errorMessages = {};
+
+				errors.inner.forEach((error) => {
+					errorMessages[error.path] = error.message;
+				});
+				dispatch(setFieldErrorMessage({ errorMessages }));
+			});
 	};
 
 	return {

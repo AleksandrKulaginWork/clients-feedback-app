@@ -3,15 +3,12 @@ import style from './style.module.css';
 import iconButton from '../../assets/image-form/icon-button.svg';
 import iconHeader from '../../assets/image-form/icon-header.svg';
 import { useFormDispatch } from './dispatch';
-import { InputField } from '../InputFields/index';
+import { FormField } from '../FormField/index';
 
 export function Form() {
 	const {
 		name, tel, email, message, agreement,
 	} = useSelector((state) => state.form.fields);
-	const {
-		isSubmitting,
-	} = useSelector((state) => state.form);
 
 	const {
 		handleSubmit,
@@ -29,33 +26,30 @@ export function Form() {
 
 				<form onSubmit={handleSubmit} className={style.form}>
 					<div className={style.blockInput}>
-						<InputField
-							key="01"
+						<FormField
 							value={name.value}
 							placeholder="Ваше имя*"
 							type="text"
 							name="name"
 							errorMessage={name.errorMessage}
 						/>
-						<InputField
-							key="02"
+						<FormField
 							value={tel.value}
 							placeholder="Телефон"
 							type="tel"
 							name="tel"
 							errorMessage={tel.errorMessage}
 						/>
-						<InputField
-							key="03"
+						<FormField
 							value={email.value}
 							placeholder="Электронная почта*"
 							type="email"
 							name="email"
 							errorMessage={email.errorMessage}
 						/>
-						<InputField
-							key="04"
+						<FormField
 							isTextArea
+							name="message"
 							value={message.value}
 							placeholder="Текст сообщения*"
 							errorMessage={message.errorMessage}
@@ -64,17 +58,15 @@ export function Form() {
 
 					<div className={style.description}>*обязательные поля</div>
 
-					<InputField
-						key="05"
+					<FormField
 						className={style.checkbox}
-						isCheckBox
 						checked={agreement.value}
 						type="checkbox"
-						name="name"
+						name="agreement"
 						errorMessage={agreement.errorMessage}
 					/>
 
-					<button className={style.button} type="submit" disabled={isSubmitting}>
+					<button className={style.button} type="submit">
 						<img src={iconButton} alt="iconButton" />
 						<span>Отправить сообщение</span>
 					</button>

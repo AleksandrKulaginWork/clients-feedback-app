@@ -1,33 +1,36 @@
 import { useFormDispatch } from '../Form/dispatch';
 import style from './style.module.css';
 
-export function InputField({
-	value, placeholder, type, name, errorMessage, isTextArea, isCheckBox, checked,
+export function FormField({
+	value, placeholder, type, name, errorMessage, isTextArea, checked,
 }) {
 	const {
 		handleChange, handleFocus, handleBlur,
 	} = useFormDispatch();
+
+	const isCheckBox = type === 'checkbox';
 
 	if (isTextArea) {
 		return (
 			<>
 				<textarea
 					value={value}
+					name={name}
 					placeholder={placeholder}
 					onChange={handleChange}
 					onFocus={handleFocus}
 					onBlur={handleBlur}
 				/>
-				{ errorMessage ? <div className={style.error}>{errorMessage}</div> : null}
+				{ errorMessage ? <div className={style.errorTextarea}>{errorMessage}</div> : null}
 			</>
 		);
 	}
 
 	if (isCheckBox) {
 		return (
-			<label htmlFor="myCheckbox">
+			<label className={style.checkbox} htmlFor="agreement">
 				<input
-					id="myCheckbox"
+					id="agreement"
 					checked={checked}
 					type={type}
 					name={name}
