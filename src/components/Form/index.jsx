@@ -24,7 +24,7 @@ export function Form() {
 
 				<p className={style.announcement}>Отправьте нам сообщение и мы ответим в ближайшее время</p>
 
-				<form onSubmit={handleSubmit} className={style.form}>
+				<form onSubmit={handleSubmit} className={style.form} noValidate>
 					<div className={style.blockInput}>
 						<FormField
 							value={name.value}
