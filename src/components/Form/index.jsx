@@ -32,6 +32,7 @@ export function Form() {
 							type="text"
 							name="name"
 							errorMessage={name.errorMessage}
+							isValid={name.isValid}
 						/>
 						<FormField
 							value={tel.value}
@@ -39,6 +40,7 @@ export function Form() {
 							type="tel"
 							name="tel"
 							errorMessage={tel.errorMessage}
+							isValid={tel.isValid}
 						/>
 						<FormField
 							value={email.value}
@@ -46,6 +48,7 @@ export function Form() {
 							type="email"
 							name="email"
 							errorMessage={email.errorMessage}
+							isValid={email.isValid}
 						/>
 						<FormField
 							isTextArea
@@ -53,6 +56,7 @@ export function Form() {
 							value={message.value}
 							placeholder="Текст сообщения*"
 							errorMessage={message.errorMessage}
+							isValid={message.isValid}
 						/>
 					</div>
 
@@ -64,6 +68,7 @@ export function Form() {
 						type="checkbox"
 						name="agreement"
 						errorMessage={agreement.errorMessage}
+						isValid={agreement.isValid}
 					/>
 
 					<button className={style.button} type="submit">

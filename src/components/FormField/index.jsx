@@ -2,7 +2,7 @@ import { useFormDispatch } from '../Form/dispatch';
 import style from './style.module.css';
 
 export function FormField({
-	value, placeholder, type, name, errorMessage, isTextArea, checked,
+	value, placeholder, type, name, errorMessage, isTextArea, checked, isValid,
 }) {
 	const {
 		handleChange, handleFocus, handleBlur,
@@ -21,28 +21,39 @@ export function FormField({
 					onFocus={handleFocus}
 					onBlur={handleBlur}
 				/>
-				{ errorMessage ? <div className={style.errorTextarea}>{errorMessage}</div> : null}
+				{isValid ? (
+					<div className={style.containerError} />
+				) : (
+					<div className={style.showErrorMessage}>{errorMessage}</div>
+				)}
 			</>
 		);
 	}
 
 	if (isCheckBox) {
 		return (
-			<label className={style.checkbox} htmlFor="agreement">
-				<input
-					id="agreement"
-					checked={checked}
-					type={type}
-					name={name}
-					onChange={handleChange}
-					onFocus={handleFocus}
-				/>
-				<p>
-					Я согласен(-на) с
-					<span> правилами </span>
-					о обработке моих персональных данных
-				</p>
-			</label>
+			<>
+				<label className={style.checkbox} htmlFor="agreement">
+					<input
+						id="agreement"
+						checked={checked}
+						type={type}
+						name={name}
+						onChange={handleChange}
+						onFocus={handleFocus}
+					/>
+					<p>
+						Я согласен(-на) с
+						<span> правилами </span>
+						о обработке моих персональных данных
+					</p>
+				</label>
+				{isValid ? (
+					<div className={style.containerError} />
+				) : (
+					<div className={style.showErrorMessage}>{errorMessage}</div>
+				)}
+			</>
 		);
 	}
 
@@ -57,7 +68,11 @@ export function FormField({
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 			/>
-			{ errorMessage ? <div className={style.error}>{errorMessage}</div> : null}
+			{isValid ? (
+				<div className={style.containerError} />
+			) : (
+				<div className={style.showErrorMessage}>{errorMessage}</div>
+			)}
 		</>
 	);
 }

@@ -76,9 +76,9 @@
     padding: 11.5px 20px;
 }
 
-.blockInput input, textarea:not(:last-child) {
+/* .blockInput input, textarea:not(:last-child) {
     margin-bottom: 12px;
-}
+} */
 
 .blockInput textarea{
     resize: none;

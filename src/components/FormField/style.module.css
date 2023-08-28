@@ -1,16 +1,13 @@
-.error{
-    font-size: 12px;
-    color: red; 
-    align-self: flex-end;
-    margin-top: -17px;
+.containerError{
+    height: 12px;
 }
-
-.errorTextarea{
-    font-size: 12px;
+.showErrorMessage{
+    height: 12px;
+    font-size: 11px;
     color: red; 
+    display: flex;
+    align-items: center;
     align-self: flex-end;
-    margin-top: -17px;
-    margin-bottom: -12px;
 }
 
 .checkbox{

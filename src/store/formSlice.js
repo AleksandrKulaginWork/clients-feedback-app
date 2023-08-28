@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	fields: {
-		name: { value: '', isValid: false },
-		tel: { value: '', isValid: false },
-		email: { value: '', isValid: false },
-		message: { value: '', isValid: false },
-		agreement: { value: false, isValid: false },
+		name: { value: '', isValid: false, errorMessage: '' },
+		tel: { value: '', isValid: false, errorMessage: '' },
+		email: { value: '', isValid: false, errorMessage: '' },
+		message: { value: '', isValid: false, errorMessage: '' },
+		agreement: { value: false, isValid: false, errorMessage: '' },
 	},
 	isSubmitting: false,
 };
