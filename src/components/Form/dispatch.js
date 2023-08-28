@@ -12,7 +12,7 @@ export function useFormDispatch() {
 	const handleChange = (e) => {
 		const { name, value, checked } = e.target;
 		const fieldValue = e.target.type === 'checkbox' ? checked : value;
-		dispatch(setFieldValue({ fieldName: name, fieldValue }));
+		dispatch(setFieldValue({ fieldName: name, value: fieldValue }));
 	};
 
 	const handleFocus = (e) => {
@@ -23,7 +23,7 @@ export function useFormDispatch() {
 	const handleBlur = async (e) => {
 		const { name, value } = e.target;
 		const validationCheck = await validationField(name, value);
-		dispatch(setFieldValidation({ fieldName: name, validationCheck }));
+		dispatch(setFieldValidation({ fieldName: name, isValid: validationCheck }));
 	};
 
 	const handleSubmit = async (e) => {
