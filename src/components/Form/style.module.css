@@ -64,21 +64,15 @@
 .blockInput{
     display: flex;
     flex-direction: column;
-    /* row-gap: 12px; */
     margin-bottom: 6.07px;
 }
 
 .blockInput input, textarea{
-    /* margin-bottom: 12px; */
     border-radius: 40px;
     outline: none;
     border: 1px solid var(--bg-blue);
     padding: 11.5px 20px;
 }
-
-/* .blockInput input, textarea:not(:last-child) {
-    margin-bottom: 12px;
-} */
 
 .blockInput textarea{
     resize: none;
