@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import style from './style.module.css';
+import './style.css';
 import iconButton from '../../assets/image-form/icon-button.svg';
 import iconHeader from '../../assets/image-form/icon-header.svg';
 import { useFormDispatch } from './dispatch';
@@ -70,7 +70,6 @@ export function Form() {
 					<Description>*обязательные поля</Description>
 
 					<FormField
-						className={style.checkbox}
 						checked={agreement.value}
 						type="checkbox"
 						name="agreement"
