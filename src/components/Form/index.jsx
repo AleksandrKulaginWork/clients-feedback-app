@@ -1,9 +1,15 @@
 import { useSelector } from 'react-redux';
-import style from './style.module.css';
 import iconButton from '../../assets/image-form/icon-button.svg';
 import iconHeader from '../../assets/image-form/icon-header.svg';
 import { useFormDispatch } from './dispatch';
 import { FormField } from '../FormField/index';
+import {
+	Announcement,
+	Button, Description,
+	FormBody, FormContainer,
+	FormHeader, FormMain,
+	InputItems, Span, Title,
+} from './style';
 
 export function Form() {
 	const {
@@ -15,17 +21,17 @@ export function Form() {
 	} = useFormDispatch();
 
 	return (
-		<div className={style.sectioForm}>
-			<div className={style.bodyForm}>
-				<div className={style.header}>
+		<FormContainer>
+			<FormBody>
+				<FormHeader>
 					<img src={iconHeader} alt="icon-header" />
-					<h1>Свяжитесь с нами</h1>
-				</div>
+					<Title>Свяжитесь с нами</Title>
+				</FormHeader>
 
-				<p className={style.announcement}>Отправьте нам сообщение и мы ответим в ближайшее время</p>
+				<Announcement>Отправьте нам сообщение и мы ответим в ближайшее время</Announcement>
 
-				<form onSubmit={handleSubmit} className={style.form} noValidate>
-					<div className={style.blockInput}>
+				<FormMain onSubmit={handleSubmit} noValidate>
+					<InputItems>
 						<FormField
 							value={name.value}
 							placeholder="Ваше имя*"
@@ -58,12 +64,11 @@ export function Form() {
 							errorMessage={message.errorMessage}
 							isValid={message.isValid}
 						/>
-					</div>
+					</InputItems>
 
-					<div className={style.description}>*обязательные поля</div>
+					<Description>*обязательные поля</Description>
 
 					<FormField
-						className={style.checkbox}
 						checked={agreement.value}
 						type="checkbox"
 						name="agreement"
@@ -71,12 +76,12 @@ export function Form() {
 						isValid={agreement.isValid}
 					/>
 
-					<button className={style.button} type="submit">
+					<Button type="submit">
 						<img src={iconButton} alt="iconButton" />
-						<span>Отправить сообщение</span>
-					</button>
-				</form>
-			</div>
-		</div>
+						<Span>Отправить сообщение</Span>
+					</Button>
+				</FormMain>
+			</FormBody>
+		</FormContainer>
 	);
 }
