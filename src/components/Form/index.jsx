@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import './style.css';
 import iconButton from '../../assets/image-form/icon-button.svg';
 import iconHeader from '../../assets/image-form/icon-header.svg';
 import { useFormDispatch } from './dispatch';

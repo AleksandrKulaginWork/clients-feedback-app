@@ -1,5 +1,10 @@
 import { useFormDispatch } from '../Form/dispatch';
-import style from './style.module.css';
+import {
+	CheckboxInput, Input,
+	Label, RemoveError,
+	ShowError, Span,
+	Text, Textarea,
+} from './style';
 
 export function FormField({
 	value, placeholder, type, name, errorMessage, isTextArea, checked, isValid,
@@ -13,7 +18,7 @@ export function FormField({
 	if (isTextArea) {
 		return (
 			<>
-				<textarea
+				<Textarea
 					value={value}
 					name={name}
 					placeholder={placeholder}
@@ -22,9 +27,9 @@ export function FormField({
 					onBlur={handleBlur}
 				/>
 				{isValid ? (
-					<div className={style.containerError} />
+					<RemoveError />
 				) : (
-					<div className={style.showErrorMessage}>{errorMessage}</div>
+					<ShowError>{errorMessage}</ShowError>
 				)}
 			</>
 		);
@@ -33,8 +38,8 @@ export function FormField({
 	if (isCheckBox) {
 		return (
 			<>
-				<label className={style.checkbox} htmlFor="agreement">
-					<input
+				<Label htmlFor="agreement">
+					<CheckboxInput
 						id="agreement"
 						checked={checked}
 						type={type}
@@ -42,16 +47,16 @@ export function FormField({
 						onChange={handleChange}
 						onFocus={handleFocus}
 					/>
-					<p>
+					<Text>
 						Я согласен(-на) с
-						<span> правилами </span>
+						<Span> правилами </Span>
 						о обработке моих персональных данных
-					</p>
-				</label>
+					</Text>
+				</Label>
 				{isValid ? (
-					<div className={style.containerError} />
+					<RemoveError />
 				) : (
-					<div className={style.showErrorMessage}>{errorMessage}</div>
+					<ShowError>{errorMessage}</ShowError>
 				)}
 			</>
 		);
@@ -59,7 +64,7 @@ export function FormField({
 
 	return (
 		<>
-			<input
+			<Input
 				value={value}
 				placeholder={placeholder}
 				type={type}
@@ -69,9 +74,9 @@ export function FormField({
 				onBlur={handleBlur}
 			/>
 			{isValid ? (
-				<div className={style.containerError} />
+				<RemoveError />
 			) : (
-				<div className={style.showErrorMessage}>{errorMessage}</div>
+				<ShowError>{errorMessage}</ShowError>
 			)}
 		</>
 	);
